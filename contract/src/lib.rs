@@ -309,6 +309,7 @@ impl Crossword {
         dimensions: CoordinatePair,
         answers: Vec<Answer>,
     ) {
+        assert_eq!(self.creator_account, env::predecessor_account_id(),"This is a special version of the contract created for Nearcon 2022. Only the owner can create a new puzzle.");
         let value_transferred = env::attached_deposit();
         let creator = env::predecessor_account_id();
         let answer_pk = PublicKey::from(answer_pk);

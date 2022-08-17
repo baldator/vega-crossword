@@ -280,11 +280,11 @@ const App = ({ nearConfig, data }) => {
   return (
     <div className="wrapper">
       <header className="site-header">
-        <div className="nav">
+        {/* <div className="nav">
           <button className="btn" onClick={handleCrosswordFormButton}>
             { showForm ? 'Return to Crossword' : 'Make a Crossword Puzzle' }
           </button>
-        </div>
+        </div> */}
         <div className="site-logo">
           <a href="#">
             <img src={logo} width="271" alt="Near Crossword Puzzle"/>
