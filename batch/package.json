@@ -1,0 +1,15 @@
+{
+  "name": "near-crossword-batch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "check_upload.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Marco Torello",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "near-api-js": "^0.45.1"
+  }
+}
