@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const NUM_DEFINITION_PER_CROSSWORD = process.env.NUM_DEFINITION_PER_CROSSWORD || 8;
+const NUM_DEFINITION_PER_CROSSWORD = process.env.NUM_DEFINITION_PER_CROSSWORD || 9;
 const DEFINITIONS_FILE_NAME = process.env.DEFINITIONS_FILE_NAME || "./definitions.json";
 
 async function run() {
@@ -74,12 +74,34 @@ async function run() {
         console.log(chalk.green.bold("Generating new puzzle. Source file: " + DEFINITIONS_FILE_NAME + ". Number of words: " + NUM_DEFINITION_PER_CROSSWORD));
         let rawdata = fs.readFileSync(DEFINITIONS_FILE_NAME);
         let sourceDefinitions = JSON.parse(rawdata);
-        console.log(student);
         let minCount = getMinCount(sourceDefinitions);
+        console.log("MinCount: " + minCount);
         let definitions = getVecCount(sourceDefinitions, minCount);
+
+        // add extra definitions
+        while (definitions.length < NUM_DEFINITION_PER_CROSSWORD){
+            console.log("Definition length: " + definitions.length);
+            definitions = addExtraDefinition(sourceDefinitions, definitions, minCount);
+        }
+
+        console.log("definitions: " + JSON.stringify(definitions));
+        // Shuffle array
+        const shuffled = definitions.sort(() => 0.5 - Math.random());
+
+        // Get sub-array of first n elements after shuffled
+        let selected = shuffled.slice(0, NUM_DEFINITION_PER_CROSSWORD);
         
+        console.log(JSON.stringify(selected));
+        const layout = generateLayout(selected);
+        // publish new crossword
 
+        // Increment values in original JSON
+        selected.forEach(function(value){
+            objIndex = sourceDefinitions.findIndex((obj => obj.answer == value.answer));
+            sourceDefinitions[objIndex].count = sourceDefinitions[objIndex].count + 1;
+        });
 
+        fs.writeFileSync(DEFINITIONS_FILE_NAME, JSON.stringify(sourceDefinitions));
         
     }
     else{
@@ -104,10 +126,19 @@ function getVecCount(vec, index){
     let def = []
     vec.forEach(function(value){
         if (value.count == index){
-            def += value;
+            def.push(JSON.parse(JSON.stringify(value)));
         }
     });
     return def;
+}
+
+function addExtraDefinition(source, dest, minCount){
+    const shuffled = source.sort(() => 0.5 - Math.random());
+    let answers = dest.map(obj => obj.answer);
+    objIndex = shuffled.findIndex(obj => obj.count > minCount && !answers.includes(obj.answer));
+    dest.push(JSON.parse(JSON.stringify(shuffled[objIndex])));
+
+    return dest;
 }
 
 run();
