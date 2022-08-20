@@ -9,6 +9,7 @@
   "author": "Marco Torello",
   "license": "ISC",
   "dependencies": {
+    "crossword-layout-generator": "^0.1.1",
     "dotenv": "^16.0.1",
     "near-api-js": "^0.45.1"
   }

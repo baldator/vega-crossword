@@ -1,4 +1,8 @@
 #!/usr/bin/env node
+
+const NUM_DEFINITION_PER_CROSSWORD = process.env.NUM_DEFINITION_PER_CROSSWORD || 8;
+const DEFINITIONS_FILE_NAME = process.env.DEFINITIONS_FILE_NAME || "./definitions.json";
+
 async function run() {
     const chalk = require("chalk");
     const boxen = require("boxen");
@@ -8,6 +12,7 @@ async function run() {
     const fs = require("fs");
     const { connect } = nearAPI;
     const { Contract } = nearAPI;
+    const { generateLayout } = require('crossword-layout-generator');
 
 
     // Load config
@@ -63,7 +68,46 @@ async function run() {
     );
 
     const response = await contract.get_unsolved_puzzles();
-    console.log(response.puzzles[0]);
+    console.log("Unresolved puzzles: " + response.puzzles.length);
+
+    if (response.puzzles.length == 1){
+        console.log(chalk.green.bold("Generating new puzzle. Source file: " + DEFINITIONS_FILE_NAME + ". Number of words: " + NUM_DEFINITION_PER_CROSSWORD));
+        let rawdata = fs.readFileSync(DEFINITIONS_FILE_NAME);
+        let sourceDefinitions = JSON.parse(rawdata);
+        console.log(student);
+        let minCount = getMinCount(sourceDefinitions);
+        let definitions = getVecCount(sourceDefinitions, minCount);
+        
+
+
+        
+    }
+    else{
+        console.log(chalk.green.bold("Nothing to do."));
+    }
+
+
+}
+
+function getMinCount(vec){
+    let min = Number.MAX_VALUE;
+    vec.forEach(function(value){
+        if (value.count < min){
+            min = value.count;
+        }
+    });
+
+    return min;
+}
+
+function getVecCount(vec, index){
+    let def = []
+    vec.forEach(function(value){
+        if (value.count == index){
+            def += value;
+        }
+    });
+    return def;
 }
 
 run();
