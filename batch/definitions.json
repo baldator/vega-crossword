@@ -1,51 +1,51 @@
 [
     {
-        "word": "sharding",
+        "answer": "sharding",
         "clue": "clue for sharding",
         "count": 0
     },
     {
-        "word": "subaccount",
+        "answer": "subaccount",
         "clue": "clue for subaccount",
         "count": 0
     },
     {
-        "word": "accesskey",
+        "answer": "accesskey",
         "clue": "clue for accesskey",
         "count": 0
     },
     {
-        "word": "indexer",
+        "answer": "indexer",
         "clue": "clue for indexer",
         "count": 0
     },
     {
-        "word": "nonfungible",
+        "answer": "nonfungible",
         "clue": "clue for nonfungible",
         "count": 0
     },
     {
-        "word": "rpc",
+        "answer": "rpc",
         "clue": "clue for rpc",
         "count": 0
     },
     {
-        "word": "simulation",
+        "answer": "simulation",
         "clue": "clue for simulation",
         "count": 0
     },
     {
-        "word": "init",
+        "answer": "init",
         "clue": "clue for init",
         "count": 0
     },
     {
-        "word": "defi",
+        "answer": "defi",
         "clue": "clue for defi",
         "count": 0
     },
     {
-        "word": "dao",
+        "answer": "dao",
         "clue": "clue for dao",
         "count": 0
     }

@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
-const NUM_DEFINITION_PER_CROSSWORD = process.env.NUM_DEFINITION_PER_CROSSWORD || 9;
+const NUM_DEFINITION_PER_CROSSWORD = process.env.NUM_DEFINITION_PER_CROSSWORD || 8;
 const DEFINITIONS_FILE_NAME = process.env.DEFINITIONS_FILE_NAME || "./definitions.json";
+const PRICE = process.env.PRICE || 1000000000000000000000000;
 
 async function run() {
     const chalk = require("chalk");
@@ -13,7 +14,7 @@ async function run() {
     const { connect } = nearAPI;
     const { Contract } = nearAPI;
     const { generateLayout } = require('crossword-layout-generator');
-
+    const { parseSeedPhrase } = require('near-seed-phrase');
 
     // Load config
     dotenv.config();
@@ -80,11 +81,8 @@ async function run() {
 
         // add extra definitions
         while (definitions.length < NUM_DEFINITION_PER_CROSSWORD){
-            console.log("Definition length: " + definitions.length);
             definitions = addExtraDefinition(sourceDefinitions, definitions, minCount);
         }
-
-        console.log("definitions: " + JSON.stringify(definitions));
         // Shuffle array
         const shuffled = definitions.sort(() => 0.5 - Math.random());
 
@@ -93,7 +91,60 @@ async function run() {
         
         console.log(JSON.stringify(selected));
         const layout = generateLayout(selected);
+        const answers = []
+        layout.result.map(value => {
+            const answerObj = {
+            'num': value.position,
+            'start': {
+                'x': value.startx,
+                'y': value.starty
+            },
+            'direction': value.orientation,
+            'length': value.answer.length,
+            'answer': value.answer,
+            'clue': value.clue
+            }
+            if (answerObj.num) {
+                answers.push(answerObj)
+            }
+        });
+
+        let dimensions = {
+            x: layout.cols,
+            y: layout.rows
+          };
+        let mungedLayout = mungeLocalCrossword(answers);
+        console.log("mungedLayout: " + JSON.stringify(mungedLayout));
+
+        const cleanLayout = answers.map(clueAnswer => {
+            // remove answer and capitalize direction value to match expected structure on smart contract
+            const {answer, direction, ...everythingElse} = clueAnswer
+            const newDirection = direction === "down" ? "Down" : "Across"
+            return {
+              ...everythingElse,
+              direction: newDirection
+            }
+          });
+        const seedPhrase = generateNewPuzzleSeedPhrase(mungedLayout);
+        console.log(seedPhrase);
+        const answer_pk = parseSeedPhrase(seedPhrase)
+        console.log(JSON.stringify(answer_pk));
+        
+        const methodArgs = {
+            answer_pk: answer_pk.publicKey,
+            dimensions,
+            answers: cleanLayout
+          };
+
         // publish new crossword
+
+        const result = await account.functionCall({
+            contractId: process.env.CONTRACT_NAME,
+            methodName: "new_puzzle",
+            args: Buffer.from(JSON.stringify(methodArgs)),
+            gas: 300000000000000, // Optional, this is the maximum allowed case
+            attachedDeposit: PRICE
+          });
 
         // Increment values in original JSON
         selected.forEach(function(value){
@@ -139,6 +190,52 @@ function addExtraDefinition(source, dest, minCount){
     dest.push(JSON.parse(JSON.stringify(shuffled[objIndex])));
 
     return dest;
+}
+
+function mungeLocalCrossword(answers) {
+    const data = {
+        across: {},
+        down: {}
+    };
+    const crosswordClues = answers;
+
+    crosswordClues.forEach((clue) => {
+        // In the smart contract it's stored as "Across" but the
+        // React library uses "across"
+        const direction = clue.direction.toLowerCase();
+        data[direction][clue.num] = {};
+        data[direction][clue.num]['clue'] = clue.clue;
+        data[direction][clue.num]['answer'] = clue.answer;
+        data[direction][clue.num]['row'] = clue.start.y;
+        data[direction][clue.num]['col'] = clue.start.x;
+    });
+    return data;
+}
+
+function generateNewPuzzleSeedPhrase(data) {
+    // JavaScript determining what the highest clue number is
+    // Example: 10 if there are ten clues, some which have both across and down clues
+    let totalClues = Object.keys(data.across).concat(Object.keys(data.down))
+        .map(n => parseInt(n))
+        .reduce((n, m) => Math.max(n, m));
+
+    let seedPhrase = [];
+    // Assume that crossword starts at 1 and goes to totalClues
+    for (let i = 1; i <= totalClues; i++) {
+        let word = '';
+        // If a number has both across and down clues, do across first.
+        let iString = i.toString(); // not strictly necessary
+        if (data.across.hasOwnProperty(iString)) {
+        seedPhrase.push(data['across'][i].answer);
+        }
+        word = ''; // Clear for items where there's both across and down
+        if (data.down.hasOwnProperty(iString)) {
+        seedPhrase.push(data['down'][i].answer);
+        }
+    }
+    const finalSeedPhrase = seedPhrase.map(w => w.toLowerCase()).join(' ');
+    console.log(`Crossword solution as seed phrase: %c${finalSeedPhrase}`, "color: #00C1DE;");
+    return finalSeedPhrase;
 }
 
 run();
