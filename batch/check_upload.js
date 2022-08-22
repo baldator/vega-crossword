@@ -71,7 +71,7 @@ async function run() {
     const response = await contract.get_unsolved_puzzles();
     console.log("Unresolved puzzles: " + response.puzzles.length);
 
-    if (response.puzzles.length == 1){
+    if (response.puzzles.length == 0){
         console.log(chalk.green.bold("Generating new puzzle. Source file: " + DEFINITIONS_FILE_NAME + ". Number of words: " + NUM_DEFINITION_PER_CROSSWORD));
         let rawdata = fs.readFileSync(DEFINITIONS_FILE_NAME);
         let sourceDefinitions = JSON.parse(rawdata);
