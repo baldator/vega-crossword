@@ -2,7 +2,7 @@
 
 const NUM_DEFINITION_PER_CROSSWORD = process.env.NUM_DEFINITION_PER_CROSSWORD || 8;
 const DEFINITIONS_FILE_NAME = process.env.DEFINITIONS_FILE_NAME || "./definitions.json";
-const PRICE = process.env.PRICE || 1000000000000000000000000;
+const PRICE = process.env.PRICE || "1000000000000000000000000";
 
 async function run() {
     const chalk = require("chalk");

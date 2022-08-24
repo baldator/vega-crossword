@@ -140,17 +140,19 @@ pub struct Crossword {
     unsolved_puzzles: UnorderedSet<PublicKey>,
     /// When a user solves the puzzle and goes to claim the reward, they might need to create an account. This is the account that likely contains the "linkdrop" smart contract. https://github.com/near/near-linkdrop
     creator_account: AccountId,
+    owner_account: AccountId,
 }
 
 
 #[near_bindgen]
 impl Crossword {
     #[init]
-    pub fn new(creator_account: AccountId) -> Self {
+    pub fn new(creator_account: AccountId, owner_account: AccountId) -> Self {
         Self {
             puzzles: LookupMap::new(b"c"),
             unsolved_puzzles: UnorderedSet::new(b"u"),
             creator_account,
+            owner_account,
         }
     }
 
@@ -309,7 +311,7 @@ impl Crossword {
         dimensions: CoordinatePair,
         answers: Vec<Answer>,
     ) {
-        assert_eq!(self.creator_account, env::predecessor_account_id(),"This is a special version of the contract created for Nearcon 2022. Only the owner can create a new puzzle.");
+        assert_eq!(self.owner_account, env::predecessor_account_id(),"This is a special version of the contract created for Nearcon 2022. Only the owner can create a new puzzle.");
         let value_transferred = env::attached_deposit();
         let creator = env::predecessor_account_id();
         let answer_pk = PublicKey::from(answer_pk);
