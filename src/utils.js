@@ -8,7 +8,8 @@ function mungeBlockchainCrossword(chainData) {
   const data = {
     across: {},
     down: {},
-    reward: nearAPI.utils.format.formatNearAmount(chainData[0].reward.toLocaleString('fullwide', {useGrouping:false}))
+    reward: nearAPI.utils.format.formatNearAmount(chainData[0].reward.toLocaleString('fullwide', {useGrouping:false})),
+    extra_reward: chainData[0].extra_reward.toLocaleString('fullwide', {useGrouping:false})
   };
   // Assume there is only one crossword puzzle, get the first
   const crosswordClues = chainData[0].answer;

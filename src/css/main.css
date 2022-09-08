@@ -314,6 +314,16 @@ input[type="submit"]:hover,
   color: #262626;
 }
 
+.subtitle {
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 14px;
+  line-height: 32px;
+  text-align: center;
+  color: #262626;
+}
+
 .error-msg {
   font-weight: 600;
   line-height: 2.5;

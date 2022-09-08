@@ -117,6 +117,7 @@ pub struct JsonPuzzle {
     creator: AccountId,
     dimensions: CoordinatePair,
     answer: Vec<Answer>,
+    extra_reward: String,
 }
 
 #[derive(BorshDeserialize, BorshSerialize, Debug)]
@@ -127,6 +128,7 @@ pub struct Puzzle {
     /// Use the CoordinatePair assuming the origin is (0, 0) in the top left side of the puzzle.
     dimensions: CoordinatePair,
     answer: Vec<Answer>,
+    extra_reward: String,
 }
 
 /// Regarding PanicOnDefault:
@@ -310,6 +312,8 @@ impl Crossword {
         answer_pk: Base58PublicKey,
         dimensions: CoordinatePair,
         answers: Vec<Answer>,
+        extra_reward: String,
+
     ) {
         assert_eq!(self.owner_account, env::predecessor_account_id(),"This is a special version of the contract created for Nearcon 2022. Only the owner can create a new puzzle.");
         let value_transferred = env::attached_deposit();
@@ -323,6 +327,7 @@ impl Crossword {
                 creator,
                 dimensions,
                 answer: answers,
+                extra_reward,
             },
         );
 
@@ -352,6 +357,7 @@ impl Crossword {
                 creator: puzzle.creator,
                 dimensions: puzzle.dimensions,
                 answer: puzzle.answer,
+                extra_reward: puzzle.extra_reward,
             };
             all_unsolved_puzzles.push(json_puzzle)
         }

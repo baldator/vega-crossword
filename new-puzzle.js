@@ -28,7 +28,8 @@ async function sendTransactions() {
     const near = await connect({ ...config, keyStore });
     const account = await near.account(CONTRACT_NAME);
     const newArgs = {
-        creator_account: CREATOR_ACCOUNT_NAME
+        creator_account: CREATOR_ACCOUNT_NAME,
+        owner_account: CREATOR_ACCOUNT_NAME
     };
     const initResult = await account.functionCall({
         contractId: CONTRACT_NAME,
@@ -42,7 +43,8 @@ async function sendTransactions() {
             "x": 19,
             "y": 13
         },
-        answers: getPuzzleData()
+        answers: getPuzzleData(),
+        extra_reward: "Super cool NFT!"
     };
     const result = await account.functionCall({
         contractId: CONTRACT_NAME,
