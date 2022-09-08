@@ -7,7 +7,7 @@ const CrosswordPage = ({ data, onCrosswordComplete }) => {
     <div className="content">
       <div style={{ width: "100vw" }}>
         <div className="title">Prize: {data.extra_reward} + {data.reward} NEAR</div>
-        <div className="subtitle">The price in NEAR will be processed immediately, the other price will be processed after NEARCON</div>
+        <div className="subtitle">The prize in NEAR is sent immediately, the other prize will be processed after NEARCON</div>
         <ThemeProvider
           theme={{
             columnBreakpoint: "9999px",
