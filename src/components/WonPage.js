@@ -42,7 +42,7 @@ const WonPage = ({
               placeholder="Enter your winning memo:"
             />
           </div>
-          <div className="field-group">
+          {/* <div className="field-group">
             <div
               className="radio-field"
               onClick={() => {
@@ -79,7 +79,7 @@ const WonPage = ({
                 <div> I need to create an account</div>
               </div>
             </div>
-          </div>
+          </div> 
 
           <motion.div
             id="seed-phrase-wrapper"
@@ -100,7 +100,7 @@ const WonPage = ({
                 NEAR Wallet
               </a>
             </p>
-          </motion.div>
+          </motion.div> */}
 
           <div className="field-group">
             <label htmlFor="claim-account-id" className="sr-only">

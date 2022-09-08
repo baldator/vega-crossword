@@ -6,7 +6,7 @@ const NoCrosswordsPage = () => {
       <div className="successful-page-title">All puzzles have been solved</div>
 
       <div className="successful-text">
-        Sorry friend, no crossword puzzles available at this time.
+        Sorry friend, no crossword puzzles available at this time. Please try again later. During NEARCON we publish a new puzzle every 5 minutes.
       </div>
       <div className="successful-text">
         In the meantime, check out the links below.
@@ -14,23 +14,23 @@ const NoCrosswordsPage = () => {
       <div className="arrows" />
       <div className="success-links">
         <div className="success-link">
-          <div className="bridge-text">For Developers </div>
+          <div className="bridge-text">NEAR Official Metaverse </div>
           <a
-            href="https://examples.near.org"
+            href="https://nearhub.club?from=crossword"
             className="near-link"
             target="_blank"
           >
-            NEAR Examples
+            NEARHUB
           </a>
         </div>
         <div className="success-link">
-          <div className="bridge-text">DeFi, NFTs, games, comics, etc. </div>
+          <div className="bridge-text">NEAR music streaming platform</div>
           <a
-            href="https://awesomenear.com?from=crossword"
+            href="https://www.tamastream.io?from=crossword"
             className="near-link"
             target="_blank"
           >
-            Awesome NEAR projects
+            Tamago
           </a>
         </div>
       </div>
