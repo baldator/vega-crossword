@@ -1,12 +1,15 @@
 #!/usr/bin/env node
+require('log-timestamp');
+
+const { exit } = require("process");
 
 const NUM_DEFINITION_PER_CROSSWORD = process.env.NUM_DEFINITION_PER_CROSSWORD || 8;
 const DEFINITIONS_FILE_NAME = process.env.DEFINITIONS_FILE_NAME || "./definitions.json";
+const PRIZES_FILE_NAME = process.env.PRIZES_FILE_NAME || "./prizes.json";
 const PRICE = process.env.PRICE || "1000000000000000000000000";
 
 async function run() {
     const chalk = require("chalk");
-    const boxen = require("boxen");
     const dotenv = require('dotenv');
     const nearAPI = require("near-api-js");
     const { KeyPair, keyStores } = require("near-api-js");
@@ -28,18 +31,7 @@ async function run() {
     const myKeyStore = new keyStores.InMemoryKeyStore();
     myKeyStore.setKey(process.env.NETWORK_ID, process.env.NEAR_ACCOUNT_ID, KeyPair.fromString(credentials.private_key));
 
-
-    const greeting = chalk.white.bold("Near crossword batch");
-    const boxenOptions = {
-    padding: 1,
-    margin: 1,
-    borderStyle: "round",
-    borderColor: "green",
-    backgroundColor: "#555555"
-    };
-
-    const msgBox = boxen( greeting, boxenOptions );
-    console.log(msgBox);
+    console.log(chalk.white.bold("Near crossword batch"));
     console.log(`Contract address: ${process.env.CONTRACT_NAME}`);
     console.log(`Doing action with address: ${process.env.NEAR_ACCOUNT_ID}`);
     console.log(`Network ID: ${process.env.NETWORK_ID}`);
@@ -72,6 +64,15 @@ async function run() {
     console.log("Unresolved puzzles: " + response.puzzles.length);
 
     if (response.puzzles.length == 0){
+        console.log(chalk.green.bold("Checking next available prize: " + PRIZES_FILE_NAME + ". Near reward: " + PRICE));
+        let rawdataPrizes = fs.readFileSync(PRIZES_FILE_NAME);
+        let sourcePrizes = JSON.parse(rawdataPrizes);
+        let extra_reward = getNextPrize(sourcePrizes);
+        if (extra_reward === null){
+            console.log(chalk.red.bold("No rewards available. Exiting!!"));
+            process.exit(0);
+        }
+        
         console.log(chalk.green.bold("Generating new puzzle. Source file: " + DEFINITIONS_FILE_NAME + ". Number of words: " + NUM_DEFINITION_PER_CROSSWORD));
         let rawdata = fs.readFileSync(DEFINITIONS_FILE_NAME);
         let sourceDefinitions = JSON.parse(rawdata);
@@ -133,7 +134,8 @@ async function run() {
         const methodArgs = {
             answer_pk: answer_pk.publicKey,
             dimensions,
-            answers: cleanLayout
+            answers: cleanLayout,
+            extra_reward: extra_reward
           };
 
         // publish new crossword
@@ -152,7 +154,11 @@ async function run() {
             sourceDefinitions[objIndex].count = sourceDefinitions[objIndex].count + 1;
         });
 
+        prizeIndex = sourcePrizes.findIndex((obj => obj.name == extra_reward));
+        sourcePrizes[prizeIndex].used = true;
+
         fs.writeFileSync(DEFINITIONS_FILE_NAME, JSON.stringify(sourceDefinitions));
+        fs.writeFileSync(PRIZES_FILE_NAME, JSON.stringify(sourcePrizes));
         
     }
     else{
@@ -236,6 +242,15 @@ function generateNewPuzzleSeedPhrase(data) {
     const finalSeedPhrase = seedPhrase.map(w => w.toLowerCase()).join(' ');
     console.log(`Crossword solution as seed phrase: %c${finalSeedPhrase}`, "color: #00C1DE;");
     return finalSeedPhrase;
+}
+
+function getNextPrize(vec){
+    vec.forEach(function(value){
+        if (value.used == true){
+            return value.name;
+        }
+    });
+    return null;
 }
 
 run();

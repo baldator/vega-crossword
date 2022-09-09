@@ -9,8 +9,10 @@
   "author": "Marco Torello",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^4.1.2",
     "crossword-layout-generator": "^0.1.1",
     "dotenv": "^16.0.1",
+    "log-timestamp": "^0.3.0",
     "near-api-js": "^0.45.1",
     "near-seed-phrase": "github:near/near-seed-phrase"
   }
