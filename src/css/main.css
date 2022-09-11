@@ -595,4 +595,123 @@ input[type="submit"]:hover,
 
 div.bottom {
   min-height: 19px;
+  margin-top: 50px
+}
+
+img.sponsor{
+  border-radius: 50%;
+  box-shadow: 0 .2rem .6remrgba(34,34,34,.05);
+  height: 3.6rem;
+  width: 3.6rem;
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  filter: grayscale(100%);
+  opacity: 0.7;
+}
+
+div.sponsor-container{
+  display: flex;
+}
+
+
+
+
+
+
+section {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+section div.container {
+  transition: all .3s ease;
+}
+section div.container h1 {
+  margin: 15px 0 0 0;
+}
+section div.container h3 {
+  margin: 0 0 25px 0;
+}
+@media (max-width: 992px) {
+  section {
+    padding: 0 20px 0 20px;
+ }
+}
+section.slide-option {
+  margin: 0 0 50px 0;
+}
+section.slide-option .no-marg {
+  margin: 0 0 0 0;
+}
+div.highway-slider {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+div.highway-slider div.highway-barrier {
+  overflow: hidden;
+  position: relative;
+}
+div.highway-slider ul.highway-lane {
+  display: flex;
+  height: 100%;
+}
+div.highway-slider ul.highway-lane li.highway-car {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  color: #343434;
+}
+@keyframes translatestf {
+  0% {
+    transform: translateX(100%);
+ }
+  100% {
+    transform: translateX(-500%);
+ }
+}
+#stffull div.highway-barrier ul.highway-lane {
+  width: 500%;
+}
+#stffull div.highway-barrier ul.highway-lane li.highway-car {
+  animation: translatestf 30s linear infinite;
+}
+#stffull div.highway-barrier ul.highway-lane li.highway-car h4 {
+  font-size: 28px;
+}
+@keyframes translateinfinite {
+  100% {
+    transform: translateX(calc(-2160px));
+ }
+}
+#infinite div.highway-barrier::before, #infinite div.highway-barrier::after {
+  content: " ";
+  position: absolute;
+  z-index: 9;
+  width: 180px;
+  height: 100%;
+}
+#infinite div.highway-barrier::before {
+  top: 0;
+  left: 0;
+  background: linear-gradient(to right,#ffffff 0%,rgba(255,255,255,0) 100%);
+}
+#infinite div.highway-barrier::after {
+  top: 0;
+  right: 0;
+  background: linear-gradient(to left,#ffffff 0%,rgba(255,255,255,0) 100%);
+}
+#infinite div.highway-barrier ul.highway-lane {
+  width: 3420px;
+}
+#infinite div.highway-barrier ul.highway-lane li.highway-car {
+  width: 65px; 
+  animation: translateinfinite 30s linear infinite;
+}
+#infinite div.highway-barrier ul.highway-lane li.highway-car span.fab {
+  font-size: 65px;
 }
