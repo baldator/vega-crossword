@@ -7,7 +7,7 @@ const CrosswordPage = ({ data, onCrosswordComplete }) => {
     <div className="content">
       <div style={{ width: "100vw" }}>
         <div className="title">Prize: {data.extra_reward} + {data.reward} NEAR</div>
-        <div className="subtitle">The prize in NEAR is sent immediately, the other prize will be processed after NEARCON</div>
+        <div className="subtitle">The prize in NEAR is sent immediately, the other prize will be processed after NEARCON. <br/>In case of multiple submissions only the first reward will be sent.</div>
         <ThemeProvider
           theme={{
             columnBreakpoint: "9999px",
@@ -26,7 +26,7 @@ const CrosswordPage = ({ data, onCrosswordComplete }) => {
           
           <div>
           <div className="subtitle">
-            A big thanks to our sponsors:
+            NEAR Partners who helped building puzzles:
           </div>
           
           <section className="slide-option">
@@ -138,6 +138,9 @@ const CrosswordPage = ({ data, onCrosswordComplete }) => {
             </div>
             </div>
             </section>
+            <div className="subtitle">
+              Brought to you by <a href="https://nearhub.club/" target="_blank">Near Hub</a> - Based on Mike's <a href="https://github.com/mikedotexe/near-crossword" target="_blank">NEAR crossword</a>
+            </div>
           </div>
         </div>
       </div>

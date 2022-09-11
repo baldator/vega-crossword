@@ -36,7 +36,7 @@ const NoCrosswordsPage = () => {
       </div>
       <div className="bottom">
           <div className="subtitle">
-            A big thanks to our sponsors:
+          In the next puzzle you will find questions from the following NEAR projects:
           </div>
           
           <section className="slide-option">
@@ -148,6 +148,9 @@ const NoCrosswordsPage = () => {
             </div>
             </div>
             </section>
+            <div className="subtitle">
+              Brought to you by <a href="https://nearhub.club/" target="_blank">Near Hub</a> - Based on Mike's <a href="https://github.com/mikedotexe/near-crossword" target="_blank">NEAR crossword</a>
+            </div>
           </div>
     </div>
   );
