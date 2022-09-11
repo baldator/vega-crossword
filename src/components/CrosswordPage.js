@@ -134,6 +134,33 @@ const CrosswordPage = ({ data, onCrosswordComplete }) => {
                 <li className="highway-car">
               <img className="sponsor" src="https://awesome-near.s3.amazonaws.com/open-forest-protocol.jpg" />
                 </li>
+                <li className="highway-car">
+              <img className="sponsor" src="https://awesome-near.s3.amazonaws.com/human-guild.jpg" />
+                </li>
+                <li className="highway-car">
+              <img className="sponsor" src="https://awesome-near.s3.amazonaws.com/open-web-sandbox.jpg" />
+                </li>
+                <li className="highway-car">
+              <img className="sponsor" src="https://awesome-near.s3.amazonaws.com/near-protocol.jpg" />
+                </li>
+                <li className="highway-car">
+              <img className="sponsor" src="https://awesome-near.s3.amazonaws.com/croncat.jpg" />
+                </li>
+                <li className="highway-car">
+              <img className="sponsor" src="https://awesome-near.s3.amazonaws.com/astrodao.jpg" />
+                </li>
+                <li className="highway-car">
+              <img className="sponsor" src="https://awesome-near.s3.amazonaws.com/paras.jpg" />
+                </li>
+                <li className="highway-car">
+              <img className="sponsor" src="https://awesome-near.s3.amazonaws.com/near-misfits.jpg" />
+                </li>
+                <li className="highway-car">
+              <img className="sponsor" src="https://awesome-near.s3.amazonaws.com/near-hub.jpg" />
+                </li>
+                <li className="highway-car">
+              <img className="sponsor" src="https://awesome-near.s3.amazonaws.com/tenk-dao.jpg" />
+                </li>
               </ul>
             </div>
             </div>

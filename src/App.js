@@ -12,7 +12,7 @@ import SuccessPage from "./components/SuccessPage";
 import CrosswordForm from './components/CrosswordForm';
 import ApiManager from "./ApiManager";
 
-const logo = require("./img/logo_v2.png");
+const logo = require("./img/logo.jpg");
 
 const App = ({ nearConfig, data }) => {
   const [solvedPuzzle, setSolvedPuzzle] = useState(
