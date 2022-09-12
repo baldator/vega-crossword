@@ -44,6 +44,9 @@ const NoCrosswordsPage = () => {
             <div className="container highway-barrier">
               <ul className="highway-lane">
                 <li className="highway-car">
+                  <img className="sponsor" src="https://awesome-near.s3.amazonaws.com/shitzu.jpg" />
+                </li>
+                <li className="highway-car">
                   <img className="sponsor" src="https://awesome-near.s3.amazonaws.com/qstn.jpg" />
                 </li>
                 <li className="highway-car">
@@ -108,6 +111,9 @@ const NoCrosswordsPage = () => {
                 </li>
 
 
+                <li className="highway-car">
+                  <img className="sponsor" src="https://awesome-near.s3.amazonaws.com/shitzu.jpg" />
+                </li>
                 <li className="highway-car">
                   <img className="sponsor" src="https://awesome-near.s3.amazonaws.com/qstn.jpg" />
                 </li>
