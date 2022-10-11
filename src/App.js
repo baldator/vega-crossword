@@ -286,9 +286,7 @@ const App = ({ nearConfig, data }) => {
           </button>
         </div> */}
         <div className="site-logo">
-          <a href="#">
-            <img src={logo} width="271" alt="Near Crossword Puzzle"/>
-          </a>
+          <h1>VEGA BLOG SCAVENGER HUNT</h1>
         </div>
       </header>
       <main className="main-area">
