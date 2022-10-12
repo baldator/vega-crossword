@@ -3,10 +3,10 @@ require('log-timestamp');
 
 const { exit } = require("process");
 
-const NUM_DEFINITION_PER_CROSSWORD = process.env.NUM_DEFINITION_PER_CROSSWORD || 8;
+const NUM_DEFINITION_PER_CROSSWORD = process.env.NUM_DEFINITION_PER_CROSSWORD || 6;
 const DEFINITIONS_FILE_NAME = process.env.DEFINITIONS_FILE_NAME || "./definitions.json";
 const PRIZES_FILE_NAME = process.env.PRIZES_FILE_NAME || "./prizes.json";
-const PRICE = process.env.PRICE || "1000000000000000000000000";
+const PRICE = process.env.PRICE || "10000000000000000000000";
 
 async function run() {
     const chalk = require("chalk");
@@ -39,7 +39,7 @@ async function run() {
     // Connect to NEAR
     const connectionConfig = {
     networkId: process.env.NETWORK_ID ,
-    keyStore: myKeyStore, // first create a key store 
+    keyStore: myKeyStore, // first create a key store
     nodeUrl: "https://rpc." + process.env.NETWORK_ID + ".near.org",
     walletUrl: "https://wallet." + process.env.NETWORK_ID + ".near.org",
     helperUrl: "https://helper." + process.env.NETWORK_ID + ".near.org",
@@ -68,11 +68,11 @@ async function run() {
         let rawdataPrizes = fs.readFileSync(PRIZES_FILE_NAME);
         let sourcePrizes = JSON.parse(rawdataPrizes);
         let extra_reward = getNextPrize(sourcePrizes);
-        if (extra_reward === null){
+        if (!extra_reward){
             console.log(chalk.red.bold("No rewards available. Exiting!!"));
             process.exit(0);
         }
-        
+
         console.log(chalk.green.bold("Generating new puzzle. Source file: " + DEFINITIONS_FILE_NAME + ". Number of words: " + NUM_DEFINITION_PER_CROSSWORD));
         let rawdata = fs.readFileSync(DEFINITIONS_FILE_NAME);
         let sourceDefinitions = JSON.parse(rawdata);
@@ -89,7 +89,7 @@ async function run() {
 
         // Get sub-array of first n elements after shuffled
         let selected = shuffled.slice(0, NUM_DEFINITION_PER_CROSSWORD);
-        
+
         console.log(JSON.stringify(selected));
         const layout = generateLayout(selected);
         const answers = []
@@ -130,7 +130,7 @@ async function run() {
         console.log(seedPhrase);
         const answer_pk = parseSeedPhrase(seedPhrase)
         console.log(JSON.stringify(answer_pk));
-        
+
         const methodArgs = {
             answer_pk: answer_pk.publicKey,
             dimensions,
@@ -138,6 +138,7 @@ async function run() {
             extra_reward: extra_reward
           };
 
+        console.log("Calling function new_puzzle with arguments:", JSON.stringify(methodArgs));
         // publish new crossword
 
         const result = await account.functionCall({
@@ -159,7 +160,7 @@ async function run() {
 
         fs.writeFileSync(DEFINITIONS_FILE_NAME, JSON.stringify(sourceDefinitions));
         fs.writeFileSync(PRIZES_FILE_NAME, JSON.stringify(sourcePrizes));
-        
+
     }
     else{
         console.log(chalk.green.bold("Nothing to do."));
@@ -245,12 +246,8 @@ function generateNewPuzzleSeedPhrase(data) {
 }
 
 function getNextPrize(vec){
-    vec.forEach(function(value){
-        if (value.used == true){
-            return value.name;
-        }
-    });
-    return null;
+    let tmp = vec.find(element => element.used == false);
+    return tmp.name;
 }
 
 run();
