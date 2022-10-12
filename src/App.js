@@ -236,7 +236,7 @@ const App = ({ nearConfig, data }) => {
       let transaction;
       try {
         setShowLoader(true);
-        transaction = await crosswordAccount.functionCall({
+        /* transaction = await crosswordAccount.functionCall({
           contractId: nearConfig.contractName,
           methodName: "submit_solution",
           args: {
@@ -244,7 +244,7 @@ const App = ({ nearConfig, data }) => {
           },
           gas: "300000000000000", // You may omit this for default gas
           attachedDeposit: 0, // You may also omit this for no deposit
-        });
+        }); */
         localStorage.setItem("playerSolvedPuzzle", crosswordSolutionPublicKey);
         setSolvedPuzzle(crosswordSolutionPublicKey);
       } catch (e) {
