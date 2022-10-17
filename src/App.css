@@ -4,7 +4,7 @@
 
 h1 {
   margin-bottom: 1em;
-  font-family: "Neue Pixel Grotesk Regular";
+  font-family: "AlphaLyrae";
 }
 
 #crossword-wrapper .clue.correct::before {
@@ -33,7 +33,7 @@ h1 {
 
 body {
   margin: 0;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "AlphaLyrae",Helvetica,Arial,sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

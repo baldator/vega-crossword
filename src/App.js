@@ -64,7 +64,6 @@ const App = ({ nearConfig, data }) => {
           claimError={claimError}
           needsNewAccount={needsNewAccount}
           setNeedsNewAccount={setNeedsNewAccount}
-          claimPrize={claimPrize}
           playerKeyPair={playerKeyPair}
           nearConfig={nearConfig}
         />

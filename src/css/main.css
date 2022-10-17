@@ -1,4 +1,4 @@
-@font-face{font-family:"Neue Pixel Grotesk Regular";src:url(../fonts/c393c13f7afaa348cc9bb27593adc3f2.woff) format("woff");font-display:swap}
+@font-face{font-family:"AlphaLyrae";src:url(../fonts/AlphaLyrae-Medium.woff) format("woff");font-display:swap}
 
 *,
 *:before,
@@ -238,7 +238,7 @@ img.logo {
 .field-group
   input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="reset"]) {
   background: #f9fafa;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "AlphaLyrae",Helvetica,Arial,sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -311,7 +311,7 @@ input[type="submit"]:hover,
 }
 
 .title {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "AlphaLyrae",Helvetica,Arial,sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 30px;
@@ -321,7 +321,6 @@ input[type="submit"]:hover,
 }
 
 .subtitle {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-style: normal;
   font-weight: 200;
   font-size: 14px;
@@ -345,7 +344,6 @@ input[type="submit"]:hover,
 }
 
 .win-page {
-  margin-top: 160px;
   padding: 0 20px;
 }
 
@@ -358,7 +356,7 @@ input[type="submit"]:hover,
 
 .win-page-error {
   text-align: center;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "AlphaLyrae",Helvetica,Arial,sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -400,7 +398,7 @@ input[type="submit"]:hover,
   width: 100%;
   max-width: 423px;
   margin: 0 auto 40px;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "AlphaLyrae",Helvetica,Arial,sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -469,7 +467,7 @@ input[type="submit"]:hover,
 
 .successful-page-title {
   margin: 160px 0 20px;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "AlphaLyrae",Helvetica,Arial,sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 30px;
@@ -479,7 +477,7 @@ input[type="submit"]:hover,
 }
 
 .successful-text {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "AlphaLyrae",Helvetica,Arial,sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -504,7 +502,7 @@ input[type="submit"]:hover,
   padding: 15px 38px;
   border-radius: 80px;
   text-decoration: none;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "AlphaLyrae",Helvetica,Arial,sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -518,7 +516,7 @@ input[type="submit"]:hover,
 }
 .bridge-text {
   margin: 0 auto 10px;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "AlphaLyrae",Helvetica,Arial,sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -529,7 +527,7 @@ input[type="submit"]:hover,
 }
 
 .defi-text {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "AlphaLyrae",Helvetica,Arial,sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -589,7 +587,7 @@ input[type="submit"]:hover,
 }
 
 .form-text {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "AlphaLyrae",Helvetica,Arial,sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
