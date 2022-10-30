@@ -5,6 +5,15 @@ import React from "react";
 const CrosswordPage = ({ data, onCrosswordComplete }) => {
   return (
     <div className="content">
+      <div style={{ width: "100vw", textAlign: "center" }}>
+        <h3>Select Crossword</h3>
+        <select onChange={ (e) => window.location.replace(e.target.value) }>
+          <option value="https://scavenger-hunt.vega.win/1">Vega Scavenger Hunt #1</option>
+          <option value="https://scavenger-hunt.vega.win/2">Vega Scavenger Hunt #2</option>
+          <option value="https://scavenger-hunt.vega.win/3">Vega Scavenger Hunt #3</option>
+          <option value="https://scavenger-hunt.vega.win/4">Vega Scavenger Hunt #4</option>
+        </select>
+      </div>
       <div style={{ width: "100vw" }}>
         <ThemeProvider
           theme={{

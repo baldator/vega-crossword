@@ -1,5 +1,4 @@
 import React from "react";
-const rainbowBridge = require("../img/rainbow-bridge.gif");
 
 const SuccessPage = () => {
   return (
@@ -70,13 +69,6 @@ const SuccessPage = () => {
             Bridge your prize money to Ethereum or Aurora
           </div>
           <div>
-            <a href="https://rainbowbridge.app?from=crossword" target="_blank">
-              <img
-                src={rainbowBridge}
-                width="319"
-                alt="Image of Aurora's Rainbow Bridge where NEAR and Ethereum can bridge assets"
-              />
-            </a>
           </div>
         </div>
       </div>

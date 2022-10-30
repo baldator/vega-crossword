@@ -9,7 +9,7 @@ const WonPage = ({
   return (
     <div className="win-page">
       <div className="title">You won!</div>
-      <div className="subtitle">In the form copy the following string in the solution field: {items}</div>
+      
       <div className="error-wrap">
         
       </div>
