@@ -9,7 +9,7 @@ const WonPage = ({
   return (
     <div className="win-page">
       <div className="title">You got it!</div>
-      <div>Submit your answer by using the following form and include the following string as the solution: {items} </div>
+      <div className="text-center">Submit your answer by using the following form and include the following string as the solution: {items} </div>
       
       <div className="error-wrap">
         

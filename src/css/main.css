@@ -718,3 +718,7 @@ div.highway-slider ul.highway-lane li.highway-car {
 #infinite div.highway-barrier ul.highway-lane li.highway-car span.fab {
   font-size: 65px;
 }
+
+.text-center{
+  text-align: center;
+}
