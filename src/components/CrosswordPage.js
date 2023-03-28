@@ -5,13 +5,6 @@ import React from "react";
 const CrosswordPage = ({ data, onCrosswordComplete }) => {
   return (
     <div className="content">
-      <div style={{ width: "100vw", textAlign: "center" }}>
-        <h3>Select Crossword</h3>
-          <a href="https://scavenger-hunt.vega.win/1">Vega Scavenger Hunt #1</a> -
-          <a href="https://scavenger-hunt.vega.win/2">Vega Scavenger Hunt #2</a> -
-          <a href="https://scavenger-hunt.vega.win/3">Vega Scavenger Hunt #3</a> -
-          <a href="https://scavenger-hunt.vega.win/4">Vega Scavenger Hunt #4</a> 
-      </div>
       <div style={{ width: "100vw" }}>
         <ThemeProvider
           theme={{
