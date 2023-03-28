@@ -25,7 +25,6 @@
     "build:contract": "cd contract && cargo build --target wasm32-unknown-unknown --release",
     "build:web": "parcel build ./src/index.html --public-url ./ --no-minify",
     "release": "export CONTRACT_NAME=sim.vegacrossword.testnet;parcel build ./src/index.html --public-url ./ --no-minify",
-    /*"release": "export CONTRACT_NAME=vegacrossword.testnet;parcel build ./src/index.html --public-url ./ --no-minify; mkdir dist/1/; mv dist/index.html dist/1/;  export CONTRACT_NAME=vega-token.vegacrossword.testnet; parcel build ./src/index.html --public-url ./ --no-minify; mkdir dist/2/; mv dist/index.html dist/2/; export CONTRACT_NAME=dex.vegacrossword.testnet; parcel build ./src/index.html --public-url ./ --no-minify; mkdir dist/3/; mv dist/index.html dist/3/; export CONTRACT_NAME=permissionless.vegacrossword.testnet; parcel build ./src/index.html --public-url ./ --no-minify; mkdir dist/4/; mv dist/index.html dist/4/; cp index.html dist/",*/
     "dev": "rm -rf neardev && npm run dev-deploy && npm run dev-start",
     "dev-start": "env-cmd -f ./neardev/dev-account.env npm start",
     "dev-deploy": "near dev-deploy contract/res/crossword.wasm",
