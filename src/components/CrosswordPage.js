@@ -11,11 +11,11 @@ const CrosswordPage = ({ data, onCrosswordComplete }) => {
             columnBreakpoint: "9999px",
             gridBackground: "transparent",
             cellBackground: "transparent",
-            cellBorder: "#000000",
-            textColor: "#000000",
-            numberColor: "#000000",
-            focusBackground: "#0cf779",
-            highlightBackground: "#95fd32",
+            cellBorder: "#FFFFFF",
+            textColor: "#FFFFFF",
+            numberColor: "#FFFFFF",
+            focusBackground: "##f5f5f5",
+            highlightBackground: "##F8F8FF",
           }}
         >
           <Crossword data={data} onCrosswordComplete={onCrosswordComplete} />
