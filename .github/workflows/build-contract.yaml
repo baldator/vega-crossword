@@ -9,7 +9,7 @@ on:
 
 jobs:
 
-  test_phaser:
+  Build contract:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -31,4 +31,4 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: crossword.wasm
-          path: ./res/crossword.wasm
+          path: ./contract/res/crossword.wasm
