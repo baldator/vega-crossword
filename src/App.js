@@ -15,25 +15,6 @@ import ApiManager from "./ApiManager";
 
 const App = ({ nearConfig, data }) => {
 
-  // Get the modal
-  var modal = document.getElementById("myModal");
-
-  // Get the <span> element that closes the modal
-  var span = document.getElementsByClassName("close")[0];
-
-  // When the user clicks on <span> (x), close the modal
-  span.onclick = function() {
-    modal.style.display = "none";
-  }
-
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
-
-
   const [solvedPuzzle, setSolvedPuzzle] = useState(
     localStorage.getItem("playerSolvedPuzzle") || null
   );
@@ -276,7 +257,7 @@ const App = ({ nearConfig, data }) => {
         console.log("Transaction hash:", transaction.transaction.hash);
       }
     } else {
-      modal.style.display = "block";
+      alert("That's not the correct solution. :/");
       console.log("That's not the correct solution. :/");
     }
   }
