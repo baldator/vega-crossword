@@ -14,8 +14,8 @@ const CrosswordPage = ({ data, onCrosswordComplete }) => {
             cellBorder: "#FFFFFF",
             textColor: "#FFFFFF",
             numberColor: "#FFFFFF",
-            focusBackground: "##f5f5f5",
-            highlightBackground: "##F8F8FF",
+            focusBackground: "#087fcf",
+            highlightBackground: "#4c4af0",
           }}
         >
           <Crossword data={data} onCrosswordComplete={onCrosswordComplete} />
