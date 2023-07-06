@@ -10,12 +10,12 @@ const CrosswordPage = ({ data, onCrosswordComplete }) => {
           theme={{
             columnBreakpoint: "9999px",
             gridBackground: "transparent",
-            cellBackground: "transparent",
+            cellBackground: "#000000",
             cellBorder: "#FFFFFF",
             textColor: "#FFFFFF",
             numberColor: "#FFFFFF",
-            focusBackground: "#087fcf",
-            highlightBackground: "#4c4af0",
+            focusBackground: "#087FCF",
+            highlightBackground: "#4C4AF0",
           }}
         >
           <Crossword data={data} onCrosswordComplete={onCrosswordComplete} />
@@ -29,6 +29,14 @@ const CrosswordPage = ({ data, onCrosswordComplete }) => {
             </div>
           </div>
         </div>
+      </div>
+      <div id="myModal" className="modal">
+      
+        <div className="modal-content">
+          <span className="close">&times;</span>
+          <p>That's not the correct solution. :/..</p>
+        </div>
+      
       </div>
     </div>
   );
