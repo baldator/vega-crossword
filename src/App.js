@@ -284,7 +284,7 @@ const App = ({ nearConfig, data }) => {
           </button>
         </div> */}
         <div className="site-logo">
-          <h1>VEGA MAINNET SIM SCAVENGER HUNT</h1>
+          <h1>VEGA ALPHA MAINNET SCAVENGER HUNT</h1>
         </div>
       </header>
       <main className="main-area">

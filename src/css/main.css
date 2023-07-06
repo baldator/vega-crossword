@@ -16,11 +16,10 @@ body {
   position: relative;
   line-height: 1.2;
   min-height: 100vh;
-  background-image: url(../assets/612842aa27ff440194fef1065c1123b2.png),url(../assets/8dabf5c9b36ab2ab2029d1ee32bea377.png);
+  background-image: url(../assets/ScavBG.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: #dfff0b;
   max-width: 1600px;
   margin-left: auto;
   margin-right: auto;
