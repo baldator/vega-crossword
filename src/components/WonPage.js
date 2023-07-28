@@ -25,7 +25,7 @@ const WonPage = ({
               <button
                 type="submit"
                 className={`win-button`}
-                onClick={(event) => {event.preventDefault();window.open("https://vegaprotocol.typeform.com/simcrossword", '_blank')}} 
+                onClick={(event) => {event.preventDefault();window.open("https://vegaprotocol.typeform.com/amscavenger", '_blank')}} 
               >
                 Claim prize
               </button>

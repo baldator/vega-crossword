@@ -445,12 +445,12 @@ input[type="submit"]:hover,
 }
 .main-area .clues .direction {
   margin: 0 6px;
-  font-size: 14px;
+  font-size: 16px;
   width: 50%;
 }
 .main-area .clues .direction h3 {
-  font-size: 14px;
-  color: #000;
+  font-size: 18px;
+  color: #fff;
 }
 
 .main-area .grid [text-anchor="start"] {
