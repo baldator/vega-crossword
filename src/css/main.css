@@ -316,7 +316,7 @@ input[type="submit"]:hover,
   font-size: 30px;
   line-height: 42px;
   text-align: center;
-  color: #262626;
+  color: #fff;
 }
 
 .subtitle {
@@ -430,7 +430,8 @@ input[type="submit"]:hover,
   min-width: 290px;
   width: calc(100% - 30px);
   margin: 0 auto;
-  max-width: 70vh;
+  max-width: 95vh;
+  max-height: 50vh;
 }
 .main-area .clues {
   display: flex;
